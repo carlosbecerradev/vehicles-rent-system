@@ -1,0 +1,10 @@
+1,Tesla,Model X,JAM-133,Automática,Electricidad,5,Lujoso,200.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\tesla-modelX.jpg
+2,Tesla,Model S,HOP-1S1,Automática,Electricidad,5,Lujoso,150.0,Alquilado,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\tesla-modelS.jpg
+3,Van,Scooby Doo,SCB-DOO,Manual,Gasolina,10,Van,100.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\Van-ScoobyDoo.jpeg
+4,Camaro,SS,BMB-B33,Automática,Diésel,5,Deportivo,250.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\camaro-SS.jpg
+5,Ford,Explorer,LJA-H3H,Manual,Gasolina,5,SUV,140.0,Alquilado,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\Ford-Explorer.jpeg
+6,Tesla,Model 3,MDL-S3X,Manual,Electricidad,5,Lujoso,240.0,En reparación,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\tesla-model3.jpg
+7,Toyota,IQ,MEN-L6A,Automática,Electricidad,3,Compacto,60.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\toyota-iq.jpg
+8,Honda,Navi,MT0-AR1,Manual,Gasolina,2,Moto Lineal,60.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\honda-navi.jpg
+9,Honda,Odyssey,T3C-111,Manual,Gasolina,8,Familiar,124.0,Alquilado,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\honda-odyssey.jpg
+10,Kia,Gold,AIA-300,Automática,Gasolina,3,Camioneta,80.0,En reparación,.\src\img\notfound.png
