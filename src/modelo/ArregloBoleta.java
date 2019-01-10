@@ -1,9 +1,6 @@
 package modelo;
 
-import bean.Cliente;
-import bean.Contrato;
-import bean.Empleado;
-import bean.Vehiculo;
+import bean.Boleta;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,37 +13,37 @@ import java.util.Date;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
-public class ArregloContrato {
+public class ArregloBoleta {
     
-    private ArrayList<Contrato> lista;
+    private ArrayList<Boleta> lista;
 
-    public ArregloContrato () {
-        lista = new ArrayList<Contrato>();
+    public ArregloBoleta () {
+        lista = new ArrayList<Boleta>();
         cargar();
     }
 
-    public String adicionar(Contrato c) {
+    public String adicionar(Boleta c) {
         String mensaje;
-        Contrato x = buscar(c.getCodigo());
+        Boleta x = buscar(c.getCodigo());
         if (x == null) {
             lista.add(c);
-            mensaje = "Contrato guardado correctamente";
+            mensaje = "Boleta guardada correctamente";
         } else {
-            mensaje = "El contrato ya existe";
+            mensaje = "La boleta ya existe";
         }
         return mensaje;
     }
 
-    public void eliminar(Contrato c) {
+    public void eliminar(Boleta c) {
         lista.remove(c);
     }
 
-    public Contrato obtener(int posicion) {
+    public Boleta obtener(int posicion) {
         return lista.get(posicion);
     }
 
-    public Contrato buscar(int codigo) {
-        Contrato c = null;
+    public Boleta buscar(int codigo) {
+        Boleta c = null;
         for (int i = 0; i < lista.size(); i++) {
             if (obtener(i).getCodigo() == codigo) {
                 c = obtener(i);
@@ -67,7 +64,7 @@ public class ArregloContrato {
         return posicion;
     }
 
-    public void actualizar(Contrato c) {
+    public void actualizar(Boleta c) {
         lista.set(buscarPosicion(c.getCodigo()), c);
     }
 
@@ -78,9 +75,9 @@ public class ArregloContrato {
     //Métodos para manipular el archivo de texto
     private void cargar() {
         try {
-            File archivo = new File("contratos.txt");
+            File archivo = new File("./archivos/boletas.txt");
             if (archivo.exists()) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("contratos.txt"), "CP1252"));
+                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("./archivos/boletas.txt"), "CP1252"));
                 String linea;
 
                 while ((linea = br.readLine()) != null) {
@@ -90,16 +87,16 @@ public class ArregloContrato {
                     String empleado = st.nextToken().trim();
                     String cliente = st.nextToken().trim();
                     String vehiculo = st.nextToken().trim();
-                    Date FechaInicio = new Date(st.nextToken().trim());
-                    Date FechaFinal = new Date(st.nextToken().trim());
+                    String FechaInicio = st.nextToken().trim();
+                    String FechaFinal = st.nextToken().trim();
                     double monto = Double.parseDouble(st.nextToken().trim());
 
-                    Contrato v = new Contrato(cod, empleado, cliente, vehiculo, FechaInicio, FechaFinal, monto);
+                    Boleta v = new Boleta(cod, empleado, cliente, vehiculo, FechaInicio, FechaFinal, monto);
                     adicionar(v);
                 }
                 br.close();
             } else {
-                JOptionPane.showMessageDialog(null, "El archivo vehiculos.txt no existe");
+                JOptionPane.showMessageDialog(null, "El archivo boletas.txt no existe");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Se produjo un error al cargar txt: " + e.toString());
@@ -109,10 +106,10 @@ public class ArregloContrato {
 
     public void grabar() {
         try {
-            PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("contratos.txt"), "CP1252"));
+            PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("./archivos/boletas.txt"), "CP1252"));
             for (int i = 0; i < totalCont(); i++) {
-                pw.println(obtener(i).getCodigo() + "," + obtener(i).getNombreEmp()+ "," +  
-                        obtener(i).getNombreCli()+ "," + obtener(i).getVehiculo()+ "," + 
+                pw.println(obtener(i).getCodigo() + "," + obtener(i).getEmpleado()+ "," +  
+                        obtener(i).getCliente()+ "," + obtener(i).getVehiculo()+ "," + 
                         obtener(i).getFechaInicio()+ "," + obtener(i).getFechaFinal()+ "," + 
                         obtener(i).getMonto());
             }

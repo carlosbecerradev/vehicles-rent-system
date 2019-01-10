@@ -2,18 +2,15 @@ package bean;
 
 import java.util.Date;
 
-public class Contrato {
+public class Boleta {
     private int codigo;
-    private String nombreEmp;
-    private String nombreCli;
-    private String vehiculo;
-    private Date FechaInicio, FechaFinal;
+    private String empleado, cliente, vehiculo, FechaInicio, FechaFinal;
     private double monto;
 
-    public Contrato(int codigo, String nombreEmp, String nombreCli, String vehiculo, Date FechaInicio, Date FechaFinal, double monto) {
+    public Boleta(int codigo, String empleado, String cliente, String vehiculo, String FechaInicio, String FechaFinal, double monto) {
         this.codigo = codigo;
-        this.nombreEmp = nombreEmp;
-        this.nombreCli = nombreCli;
+        this.empleado = empleado;
+        this.cliente = cliente;
         this.vehiculo = vehiculo;
         this.FechaInicio = FechaInicio;
         this.FechaFinal = FechaFinal;
@@ -28,20 +25,20 @@ public class Contrato {
         this.codigo = codigo;
     }
 
-    public String getNombreEmp() {
-        return nombreEmp;
+    public String getEmpleado() {
+        return empleado;
     }
 
-    public void setNombreEmp(String nombreEmp) {
-        this.nombreEmp = nombreEmp;
+    public void setEmpleado(String empleado) {
+        this.empleado = empleado;
     }
 
-    public String getNombreCli() {
-        return nombreCli;
+    public String getCliente() {
+        return cliente;
     }
 
-    public void setNombreCli(String nombreCli) {
-        this.nombreCli = nombreCli;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public String getVehiculo() {
@@ -52,19 +49,19 @@ public class Contrato {
         this.vehiculo = vehiculo;
     }
 
-    public Date getFechaInicio() {
+    public String getFechaInicio() {
         return FechaInicio;
     }
 
-    public void setFechaInicio(Date FechaInicio) {
+    public void setFechaInicio(String FechaInicio) {
         this.FechaInicio = FechaInicio;
     }
 
-    public Date getFechaFinal() {
+    public String getFechaFinal() {
         return FechaFinal;
     }
 
-    public void setFechaFinal(Date FechaFinal) {
+    public void setFechaFinal(String FechaFinal) {
         this.FechaFinal = FechaFinal;
     }
 
@@ -75,6 +72,5 @@ public class Contrato {
     public void setMonto(double monto) {
         this.monto = monto;
     }
-
-    
+ 
 }

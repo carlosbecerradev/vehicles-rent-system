@@ -626,7 +626,12 @@ public class JFVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlacaMKeyTyped
 
     private void tblListaVehiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListaVehiMouseClicked
-        enviarVehiculo();
+        if(evt.getClickCount()==1){
+         
+        }
+        if(evt.getClickCount()==2){
+         enviarVehiculo();
+       }
     }//GEN-LAST:event_tblListaVehiMouseClicked
 
     /**
@@ -1106,7 +1111,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         int fila = tblListaVehi.getSelectedRow();
         if (fila >= 0) {
             int pos = (int)tblListaVehi.getValueAt(fila, 0);
-            Vehiculo v = listaVehi.obtener(pos);
+            Vehiculo v = listaVehi.buscar(pos);
             JFPrincipal.lblNombreVehi.setText(v.getMarca() + " " + v.getModelo());
             JFPrincipal.lblCostoVeh.setText(String.valueOf(v.getCosto()));
             JFPrincipal.veh = v;

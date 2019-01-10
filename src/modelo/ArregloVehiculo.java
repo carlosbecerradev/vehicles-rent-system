@@ -88,9 +88,9 @@ public class ArregloVehiculo {
     //Métodos para manipular el archivo de texto
     private void cargar() {
         try {
-            File archivo = new File("vehiculos.txt");
+            File archivo = new File("./archivos/vehiculos.txt");
             if (archivo.exists()) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("vehiculos.txt"), "CP1252"));
+                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("./archivos/vehiculos.txt"), "CP1252"));
                 String linea;
 
                 while ((linea = br.readLine()) != null) {
@@ -123,7 +123,7 @@ public class ArregloVehiculo {
 
     public void grabar() {
         try {
-            PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("vehiculos.txt"), "CP1252"));
+            PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("./archivos/vehiculos.txt"), "CP1252"));
             for (int i = 0; i < totalVehi(); i++) {
                 pw.println(obtener(i).getCodigo() + "," + obtener(i).getMarca() + "," +  
                         obtener(i).getModelo() + "," + obtener(i).getPlaca()+ "," + 
