@@ -108,7 +108,7 @@ public class JFVehiculo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -599,7 +599,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         Character c = evt.getKeyChar();
         if (Character.isDigit(c) || Character.isAlphabetic(c) || c.equals('-')) {
             if (c.equals('-')) {
-                if (txtPlacaR.getText().contains("-") ) {
+                if (txtPlacaR.getText().contains("-")) {
                     evt.consume();
                     Toolkit.getDefaultToolkit().beep();
                 }
@@ -626,12 +626,12 @@ public class JFVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlacaMKeyTyped
 
     private void tblListaVehiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListaVehiMouseClicked
-        if(evt.getClickCount()==1){
-         
+        if (evt.getClickCount() == 1) {
+
         }
-        if(evt.getClickCount()==2){
-         enviarVehiculo();
-       }
+        if (evt.getClickCount() == 2) {
+            enviarVehiculo();
+        }
     }//GEN-LAST:event_tblListaVehiMouseClicked
 
     /**
@@ -746,10 +746,10 @@ public class JFVehiculo extends javax.swing.JFrame {
                 || txtPlacaR.getText().equals("") || cboCategoriaR.getSelectedIndex() <= 0
                 || cboTransmiR.getSelectedIndex() <= 0 || cboCombusR.getSelectedIndex() <= 0
                 || (int) spiAsientR.getValue() <= 0 || txtCostoR.getText().equals("")
-                || Integer.parseInt(txtCostoR.getText()) <= 0 || cboEstadoR.getSelectedIndex() <= 0;
+                || Double.parseDouble(txtCostoR.getText()) <= 0 || cboEstadoR.getSelectedIndex() <= 0;
 
         if (!validar) {
-            try {                
+            try {
                 Vehiculo p = new Vehiculo(codigoR(), marcaR(), modeloR(), placaR(), transmisionR(),
                         combustibleR(), asientosR(), categoriaR(), costoR(), estadoR(), imagenR());
                 String respuesta = listaVehi.adicionar(p);
@@ -928,14 +928,24 @@ public class JFVehiculo extends javax.swing.JFrame {
     }
 
     private void actualizar() {
-        try {
-            Vehiculo p = new Vehiculo(codigoM(), marcaM(), modeloM(), placaM(), transmisionM(),
-                    combustibleM(), asientosM(), categoriaM(), costoM(), estadoM(), imagenM());
-            listaVehi.actualizar(p);
-            listaVehi.grabar();
-            JOptionPane.showMessageDialog(null, "Actualización realizada con éxito");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.toString());
+        boolean validar = txtCodigoM.getText().equals("") || txtMarcaM.getText().equals("")
+                || txtPlacaM.getText().equals("") || cboCategoriaM.getSelectedIndex() <= 0
+                || cboTransmiM.getSelectedIndex() <= 0 || cboCombusM.getSelectedIndex() <= 0
+                || (int) spiAsientM.getValue() <= 0 || txtCostoM.getText().equals("")
+                || Double.parseDouble(txtCostoM.getText()) <= 0 || cboEstadoM.getSelectedIndex() <= 0;
+
+        if (!validar) {
+            try {
+                Vehiculo p = new Vehiculo(codigoM(), marcaM(), modeloM(), placaM(), transmisionM(),
+                        combustibleM(), asientosM(), categoriaM(), costoM(), estadoM(), imagenM());
+                listaVehi.actualizar(p);
+                listaVehi.grabar();
+                JOptionPane.showMessageDialog(null, "Actualización realizada con éxito");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.toString());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Rellena todos los campos.");
         }
     }
 
@@ -1110,7 +1120,7 @@ public class JFVehiculo extends javax.swing.JFrame {
     private void enviarVehiculo() {
         int fila = tblListaVehi.getSelectedRow();
         if (fila >= 0) {
-            int pos = (int)tblListaVehi.getValueAt(fila, 0);
+            int pos = (int) tblListaVehi.getValueAt(fila, 0);
             Vehiculo v = listaVehi.buscar(pos);
             JFPrincipal.lblNombreVehi.setText(v.getMarca() + " " + v.getModelo());
             JFPrincipal.lblCostoVeh.setText(String.valueOf(v.getCosto()));
