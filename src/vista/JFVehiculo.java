@@ -21,7 +21,7 @@ public class JFVehiculo extends javax.swing.JFrame {
     /* Manejo de Archivos */
     JFileChooser elegir = new JFileChooser(".");
     FileInputStream entrada = null;
-    File archivoR, archivoM, archivoDef = new File("./src/img/notfound.png");
+    File archivoR = new File("./src/img/notfound.png"), archivoM = new File("./src/img/notfound.png"), archivoDef = new File("./src/img/notfound.png");
     byte[] imagenVehiR = null, imagenVehiM = null;
 
     public JFVehiculo() {
@@ -288,7 +288,7 @@ public class JFVehiculo extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -749,7 +749,7 @@ public class JFVehiculo extends javax.swing.JFrame {
                 || Integer.parseInt(txtCostoR.getText()) <= 0 || cboEstadoR.getSelectedIndex() <= 0;
 
         if (!validar) {
-            try {
+            try {                
                 Vehiculo p = new Vehiculo(codigoR(), marcaR(), modeloR(), placaR(), transmisionR(),
                         combustibleR(), asientosR(), categoriaR(), costoR(), estadoR(), imagenR());
                 String respuesta = listaVehi.adicionar(p);

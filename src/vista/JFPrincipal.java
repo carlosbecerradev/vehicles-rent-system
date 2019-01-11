@@ -11,7 +11,6 @@ import bean.Empleado;
 import bean.Vehiculo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.ArregloBoleta;
@@ -419,9 +418,9 @@ public class JFPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void registrar() {
-        boolean validar = modelPedido.getRowCount()<= 0 || txtBoleta.getText().equals("") ||
-                           lblNombreCli.getText().equals("") || lblDniCli.getText().equals("") ||
-                            lblNombreEmp.getText().equals("");
+        boolean validar = modelPedido.getRowCount() <= 0 || txtBoleta.getText().equals("")
+                || lblNombreCli.getText().equals("") || lblDniCli.getText().equals("")
+                || lblNombreEmp.getText().equals("");
         if (!validar) {
             try {
                 Boleta b = new Boleta(codBoleta(), empleado(), cliente(), vehiculo(), fechaInicio(), fechaFinal(), monto());
@@ -435,37 +434,46 @@ public class JFPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Le falto rellenar un campos o ingreso un dato errómeo.");
         }
     }
-    
-    private int codBoleta(){
+
+    private int codBoleta() {
         return Integer.parseInt(txtBoleta.getText());
     }
-    private String empleado(){
+
+    private String empleado() {
         return lblNombreEmp.getText();
     }
-    private String cliente(){
+
+    private String cliente() {
         return lblNombreCli.getText() + " " + lblDniCli.getText();
     }
-    private String vehiculo(){
+
+    private String vehiculo() {
         int count = modelPedido.getRowCount();
         String vehiculos = "";
         if (count >= 1) {
             for (int i = 0; i < count; i++) {
-                vehiculos += modelPedido.getValueAt(i, 0) + " " + 
-                        modelPedido.getValueAt(i, 1) + "/";
+                vehiculos += modelPedido.getValueAt(i, 0) + " "
+                        + modelPedido.getValueAt(i, 1) + "/";
             }
         }
         return vehiculos;
     }
-    private String fechaInicio(){
+
+    private String fechaInicio() {
         return fechaString(fechIni());
     }
-    private String fechaFinal(){
+
+    private String fechaFinal() {
         return fechaString(fechFin());
     }
-    private double monto(){
+
+    private double monto() {
         return Double.parseDouble(txtMontoFinal.getText());
     }
-    /****/
+
+    /**
+     * *
+     */
     private Date fechIni() {
         return jdcFechIni.getDate();
     }
@@ -481,20 +489,31 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void agregarPedido() {
 
-        boolean validar = lblNombreVehi.getText().equals("") || jdcFechFin.getDate() == null
-                          || jdcFechIni.getDate() == null;
+        boolean validar = lblNombreVehi.getText().equals("");
         if (!validar) {
-            Object ar[] = new Object[6];
-            ar[0] = lblNombreVehi.getText();
-            ar[1] = veh.getPlaca();
-            ar[2] = fechaInicio();
-            ar[3] = fechaFinal();
-            int dias = fechFin().getDate() - fechIni().getDate();
-            ar[4] = String.valueOf(dias);
-            double importe = veh.getCosto() * dias;
-            ar[5] = String.format("%.2f", importe).replace(',', '.');
-            modelPedido.addRow(ar);
-            colocarMonto();
+            if (fechFin() != null && fechIni() != null) {
+                int resta = 0;
+                resta = fechFin().getDate() - fechIni().getDate();
+                if (resta <= 0) {
+                    Object ar[] = new Object[6];
+                    ar[0] = lblNombreVehi.getText();
+                    ar[1] = veh.getPlaca();
+                    ar[2] = fechaInicio();
+                    ar[3] = fechaFinal();
+                    int dias = fechFin().getDate() - fechIni().getDate();
+                    ar[4] = String.valueOf(dias);
+                    double importe = veh.getCosto() * dias;
+                    ar[5] = String.format("%.2f", importe).replace(',', '.');
+                    modelPedido.addRow(ar);
+                    colocarMonto();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Los dias de alquiler deben ser mayor a 0..");
+            }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Elija la fecha de alquiler.");
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "Relleno los campos restantes.");
         }

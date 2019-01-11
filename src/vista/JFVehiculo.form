@@ -579,9 +579,9 @@
                             <Column editable="false" title="C&#xd3;DIGO" type="java.lang.Object"/>
                             <Column editable="false" title="MARCA" type="java.lang.Object"/>
                             <Column editable="false" title="MODELO" type="java.lang.Object"/>
-                            <Column editable="true" title="CATEGOR&#xcd;A" type="java.lang.Object"/>
-                            <Column editable="true" title="TRANSMISI&#xd3;N" type="java.lang.Object"/>
-                            <Column editable="true" title="COMBUSTIBLE" type="java.lang.Object"/>
+                            <Column editable="false" title="CATEGOR&#xcd;A" type="java.lang.Object"/>
+                            <Column editable="false" title="TRANSMISI&#xd3;N" type="java.lang.Object"/>
+                            <Column editable="false" title="COMBUSTIBLE" type="java.lang.Object"/>
                             <Column editable="false" title="N&#xb0; ASIENTOS." type="java.lang.Object"/>
                             <Column editable="false" title="A/C" type="java.lang.Object"/>
                             <Column editable="false" title="COSTO(S/)" type="java.lang.Object"/>
