@@ -168,7 +168,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         txtMarcaR.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jpRVehi.add(txtMarcaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 220, 25));
 
-        btnRegistrar.setBackground(new java.awt.Color(0, 204, 0));
+        btnRegistrar.setBackground(new java.awt.Color(0, 153, 0));
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("GUARDAR");
@@ -179,7 +179,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         });
         jpRVehi.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 200, 40));
 
-        btnLimpiarR.setBackground(new java.awt.Color(255, 255, 0));
+        btnLimpiarR.setBackground(new java.awt.Color(0, 153, 204));
         btnLimpiarR.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLimpiarR.setText("LIMPIAR");
         btnLimpiarR.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +306,7 @@ public class JFVehiculo extends javax.swing.JFrame {
 
         jpCVehi.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 840, 390));
 
-        btnVerVehi.setBackground(new java.awt.Color(51, 51, 51));
+        btnVerVehi.setBackground(new java.awt.Color(0, 153, 204));
         btnVerVehi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnVerVehi.setForeground(new java.awt.Color(255, 255, 255));
         btnVerVehi.setText("VER IMAGEN");
@@ -339,9 +339,8 @@ public class JFVehiculo extends javax.swing.JFrame {
         txtCodigoM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jpMVehi.add(txtCodigoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 25, 200, 25));
 
-        btnBuscarM.setBackground(new java.awt.Color(51, 51, 51));
+        btnBuscarM.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnBuscarM.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarM.setText("BUSCAR");
         btnBuscarM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,7 +350,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         jpMVehi.add(btnBuscarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 15, 150, 40));
         jpMVehi.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 790, 10));
 
-        btnLimpiarM.setBackground(new java.awt.Color(255, 255, 0));
+        btnLimpiarM.setBackground(new java.awt.Color(0, 153, 204));
         btnLimpiarM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLimpiarM.setText("LIMPIAR");
         btnLimpiarM.addActionListener(new java.awt.event.ActionListener() {
@@ -457,7 +456,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         lblVehiM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 51)));
         jpMVehi.add(lblVehiM, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 300, 200));
 
-        btnActualizar.setBackground(new java.awt.Color(0, 204, 0));
+        btnActualizar.setBackground(new java.awt.Color(0, 153, 0));
         btnActualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("ACTUALIZAR");
@@ -753,12 +752,14 @@ public class JFVehiculo extends javax.swing.JFrame {
                 Vehiculo p = new Vehiculo(codigoR(), marcaR(), modeloR(), placaR(), transmisionR(),
                         combustibleR(), asientosR(), categoriaR(), costoR(), estadoR(), imagenR());
                 String respuesta = listaVehi.adicionar(p);
+                if (respuesta.equals("Vehículo guardado correctamente")) {
+                    limpiarR();
+                }
                 listaVehi.grabar();
                 JOptionPane.showMessageDialog(null, respuesta);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error al guardar: " + e.toString());
             }
-            limpiarR();
         } else {
             JOptionPane.showMessageDialog(null, "Le falto rellenar un campos o ingreso un dato errómeo.");
         }
@@ -897,13 +898,16 @@ public class JFVehiculo extends javax.swing.JFrame {
      */
     private void buscar() {
         try {
-            Vehiculo p = null;
-            p = listaVehi.buscar(codigoM());
-            mostrarVehiculo(p);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Los códigos son de tipo numérico.");
+            if (rootPaneCheckingEnabled) {
+                int cod = codigoM();
+                Vehiculo p = null;
+                p = listaVehi.buscar(cod);
+                mostrarVehiculo(p);
+            }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "El código ingresado no existe");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Los códigos son de tipo numérico.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en buscar: " + e);
         }
@@ -1102,7 +1106,8 @@ public class JFVehiculo extends javax.swing.JFrame {
             File ruta = new File(v.getRutaImg());
             mandar.setVisible(true);
             byte[] imagen = null;
-            ImgTbl.lblImgVehi.setIcon(escalarImg(ruta, imagen, 600, 400));
+            ImgTbl.lblImgVehi.setIcon(escalarImg(ruta, imagen, 800, 500));
+            ImgTbl.lblImgDescripcion.setText(v.getMarca() + " " + v.getModelo());
             this.repaint();
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona una fila.");

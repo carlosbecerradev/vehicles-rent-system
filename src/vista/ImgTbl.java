@@ -28,32 +28,27 @@ public class ImgTbl extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         lblImgVehi = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lblImgDescripcion = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(600, 440));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(600, 440));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(lblImgVehi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("CERRAR VENTANA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 600, 40));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(lblImgVehi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+
+        lblImgDescripcion.setBackground(new java.awt.Color(0, 153, 255));
+        lblImgDescripcion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblImgDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblImgDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 800, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,7 +86,8 @@ public class ImgTbl extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JLabel lblImgDescripcion;
     public static javax.swing.JLabel lblImgVehi;
     // End of variables declaration//GEN-END:variables
 }

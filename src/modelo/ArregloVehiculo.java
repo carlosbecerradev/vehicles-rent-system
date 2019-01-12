@@ -57,6 +57,7 @@ public class ArregloVehiculo {
 
     public Vehiculo buscar(int codigo) {
         Vehiculo v = null;
+        
         for (int i = 0; i < lista.size(); i++) {
             if (obtener(i).getCodigo() == codigo) {
                 v = obtener(i);
