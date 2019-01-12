@@ -268,8 +268,9 @@ public class JFVehiculo extends javax.swing.JFrame {
         jpCVehi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpCVehi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnListar.setBackground(new java.awt.Color(255, 255, 255));
+        btnListar.setBackground(new java.awt.Color(51, 51, 51));
         btnListar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnListar.setForeground(new java.awt.Color(255, 255, 255));
         btnListar.setText("LISTAR");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -339,8 +340,9 @@ public class JFVehiculo extends javax.swing.JFrame {
         txtCodigoM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jpMVehi.add(txtCodigoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 25, 200, 25));
 
-        btnBuscarM.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscarM.setBackground(new java.awt.Color(51, 51, 51));
         btnBuscarM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnBuscarM.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarM.setText("BUSCAR");
         btnBuscarM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

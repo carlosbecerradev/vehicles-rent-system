@@ -7,4 +7,4 @@
 7,Toyota,IQ,MEN-L6A,Automática,Electricidad,3,Compacto,60.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\toyota-iq.jpg
 8,Honda,Navi,MT0-AR1,Manual,Gasolina,2,Moto Lineal,60.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\honda-navi.jpg
 9,Honda,Odyssey,T3C-111,Manual,Gasolina,8,Familiar,124.0,Alquilado,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\honda-odyssey.jpg
-10,124,214,214,Automática,Diésel,2,Compacto,124.6,Disponible,.\src\img\notfound.png
+10,Tesla,Model X,JAM-133,Automática,Electricidad,5,Lujoso,200.0,Disponible,E:\IDAT\CICLO II\POO\Tema 16\AlquilerDeVehiculos\vehiculos\tesla-modelX.jpg

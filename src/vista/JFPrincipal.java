@@ -7,7 +7,7 @@ package vista;
 
 import bean.Boleta;
 import bean.Cliente;
-import bean.Empleado;
+import bean.Vendedor;
 import bean.Vehiculo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,15 +22,14 @@ import modelo.ArregloBoleta;
 public class JFPrincipal extends javax.swing.JFrame {
 
     static Vehiculo veh = null;
+    static Vendedor ven = null;
     ArregloBoleta listaBoleta = new ArregloBoleta();
     DefaultTableModel modelPedido;
 
     public JFPrincipal() {
         initComponents();
         modelPedido = (DefaultTableModel) tblVehiAgre.getModel();
-        this.setLocationRelativeTo(null);
-        Empleado emp = new Empleado();
-        lblNombreEmp.setText(emp.getNombre());
+        this.setLocationRelativeTo(null);        
         this.setTitle("SISTEMA DE ALQUILER DE VEHÍCULOS");
     }
 
@@ -117,19 +116,19 @@ public class JFPrincipal extends javax.swing.JFrame {
                 btnBuscarCliActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 120, 30));
+        jPanel1.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 35, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("NOMBRE:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 100, 30));
 
-        lblDniCli.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDniCli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblDniCli.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDniCli.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(lblDniCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 200, 30));
 
-        lblNombreCli.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNombreCli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblNombreCli.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreCli.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(lblNombreCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 200, 30));
@@ -145,7 +144,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel10.setText("VEHÍCULO:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 100, 30));
 
-        lblNombreVehi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNombreVehi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblNombreVehi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreVehi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(lblNombreVehi, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 200, 30));
@@ -155,20 +154,21 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel12.setText("COSTO POR DÍA (S/):");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 170, 30));
 
-        lblCostoVeh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCostoVeh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblCostoVeh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCostoVeh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(lblCostoVeh, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 150, 30));
 
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setBackground(new java.awt.Color(0, 153, 255));
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("AGREGAR PEDIDO");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 200, 30));
+        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 145, 200, 40));
 
         btnBuscarVehi.setBackground(new java.awt.Color(51, 51, 51));
         btnBuscarVehi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -179,7 +179,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 btnBuscarVehiActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscarVehi, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 120, 30));
+        jPanel2.add(btnBuscarVehi, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 35, 120, 40));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 135, 490, 10));
 
         jpPrincipalBase.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 550, 200));
@@ -222,9 +222,13 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel4.setText("FECHA INICIO:");
         jpPrincipalBase.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 120, 30));
 
-        lblNombreEmp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNombreEmp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jpPrincipalBase.add(lblNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 350, 30));
+
+        jdcFechIni.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jpPrincipalBase.add(jdcFechIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 200, 30));
+
+        jdcFechFin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jpPrincipalBase.add(jdcFechFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 40, 200, 30));
 
         btnRegistrar.setBackground(new java.awt.Color(0, 204, 0));
@@ -341,7 +345,8 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        JFVendedor jfven = new JFVendedor();
+        jfven.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
@@ -410,7 +415,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     public static javax.swing.JLabel lblCostoVeh;
     private javax.swing.JLabel lblDniCli;
     private javax.swing.JLabel lblNombreCli;
-    private javax.swing.JLabel lblNombreEmp;
+    public static javax.swing.JLabel lblNombreEmp;
     public static javax.swing.JLabel lblNombreVehi;
     private javax.swing.JTable tblVehiAgre;
     private javax.swing.JTextField txtBoleta;

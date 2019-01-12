@@ -1,0 +1,10 @@
+1,Anderson,Bengolea,Sánchez,24,+51-957480008,Hombre
+2,Deysi,Pillaca,Coyllo,23,972342322,Mujer
+3,Cecilia,Sánchez,Quispe,67,954410888,Mujer
+4,Jose,Bengolea,Sánchez,37,927375723,Hombre
+5,Manuel,Sotelo,Bengolea,25,932433532,Hombre
+6,Stefano,Sotelo,Bengolea,19,945837465,Hombre
+7,Nahomy,Chumpitaz,Bengoela,4,927372423,Mujer
+8,Cristian,Chumpitaz,Bengolea,15,924332423,Hombre
+9,Piero,Chumpitaz,Bengolea,19,92452352,Hombre
+10,Soledad,Bengolea,Sánchez,37,984273742,Mujer
