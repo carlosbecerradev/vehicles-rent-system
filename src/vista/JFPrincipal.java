@@ -6,7 +6,8 @@
 package vista;
 
 import bean.Boleta;
-import bean.Cliente;
+
+import bean.Cliente1;
 import bean.Vendedor;
 import bean.Vehiculo;
 import java.text.SimpleDateFormat;
@@ -23,6 +24,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     static Vehiculo veh = null;
     static Vendedor ven = null;
+    static Cliente1 cli = null;
     ArregloBoleta listaBoleta = new ArregloBoleta();
     DefaultTableModel modelPedido;
 
@@ -30,6 +32,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         initComponents();
         modelPedido = (DefaultTableModel) tblVehiAgre.getModel();
         this.setLocationRelativeTo(null);        
+        txtBoleta.setText(String.valueOf(listaBoleta.totalCont()+1));
         this.setTitle("SISTEMA DE ALQUILER DE VEHÍCULOS");
     }
 
@@ -73,6 +76,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         txtMontoFinal = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        cambiarUsuario = new javax.swing.JMenuItem();
+        salir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -92,6 +97,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel1.setText("N° DE BOLETA:");
         jpPrincipalBase.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 200, 30));
 
+        txtBoleta.setEditable(false);
         txtBoleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtBoleta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBoleta.setText("1");
@@ -257,6 +263,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel14.setText("MONTO FINAL:");
         jpPrincipalBase.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 390, 200, 30));
 
+        txtMontoFinal.setEditable(false);
         txtMontoFinal.setBackground(new java.awt.Color(0, 0, 0));
         txtMontoFinal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtMontoFinal.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,6 +272,23 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpPrincipalBase.add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 430, 200, 40));
 
         jMenu1.setText("SISTEMA");
+
+        cambiarUsuario.setText("CAMBIAR USUARIO");
+        cambiarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cambiarUsuario);
+
+        salir.setText("SALIR");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(salir);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("MANTENIMIENTO");
@@ -312,9 +336,13 @@ public class JFPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCliActionPerformed
-        Cliente cc = new Cliente();
-        lblNombreCli.setText(cc.getNombre());
-        lblDniCli.setText(String.valueOf(cc.getDni()));
+        
+        JFCliente jfc = new JFCliente();
+        jfc.setVisible(true);
+        JFCliente.jTabbedPane1.setSelectedIndex(1);
+        
+       
+        
     }//GEN-LAST:event_btnBuscarCliActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -329,6 +357,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         registrar();
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnQuitarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarPedidoActionPerformed
@@ -341,13 +370,26 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        JFCliente jfc = new JFCliente();
+        jfc.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         JFVendedor jfven = new JFVendedor();
         jfven.setVisible(true);
+        JFVendedor.jTabbedPane1.setSelectedIndex(2);
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void cambiarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarUsuarioActionPerformed
+        JFLogin jfl = new JFLogin();
+        jfl.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cambiarUsuarioActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,6 +432,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarVehi;
     private javax.swing.JButton btnQuitarPedido;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JMenuItem cambiarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -404,19 +447,20 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    public static javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private com.toedter.calendar.JDateChooser jdcFechFin;
     private com.toedter.calendar.JDateChooser jdcFechIni;
-    private javax.swing.JPanel jpPrincipalBase;
+    public static javax.swing.JPanel jpPrincipalBase;
     public static javax.swing.JLabel lblCostoVeh;
-    private javax.swing.JLabel lblDniCli;
-    private javax.swing.JLabel lblNombreCli;
+    public static javax.swing.JLabel lblDniCli;
+    public static javax.swing.JLabel lblNombreCli;
     public static javax.swing.JLabel lblNombreEmp;
     public static javax.swing.JLabel lblNombreVehi;
+    private javax.swing.JMenuItem salir;
     private javax.swing.JTable tblVehiAgre;
     private javax.swing.JTextField txtBoleta;
     private javax.swing.JTextField txtMontoFinal;
@@ -424,14 +468,15 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void registrar() {
         boolean validar = modelPedido.getRowCount() <= 0 || txtBoleta.getText().equals("")
-                || lblNombreCli.getText().equals("") || lblDniCli.getText().equals("")
-                || lblNombreEmp.getText().equals("");
+                || lblNombreCli.getText().equals("") || lblDniCli.getText().equals("")||
+                lblNombreEmp.getText().equals("");
         if (!validar) {
             try {
                 Boleta b = new Boleta(codBoleta(), empleado(), cliente(), vehiculo(), fechaInicio(), fechaFinal(), monto());
                 String respuesta = listaBoleta.adicionar(b);
                 listaBoleta.grabar();
                 JOptionPane.showMessageDialog(null, respuesta);
+                limpiarPrincipal();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error al guardar: " + e.toString());
             }
@@ -498,8 +543,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         if (!validar) {
             if (fechFin() != null && fechIni() != null) {
                 int resta = 0;
-                resta = fechFin().getDate() - fechIni().getDate();
-                if (resta <= 0) {
+                resta = fechIni().getDate() - fechFin().getDate();               
+                if (resta < 0) {
                     Object ar[] = new Object[6];
                     ar[0] = lblNombreVehi.getText();
                     ar[1] = veh.getPlaca();
@@ -546,6 +591,21 @@ public class JFPrincipal extends javax.swing.JFrame {
             monto += Double.parseDouble((String) modelPedido.getValueAt(i, 5));
         }
         txtMontoFinal.setText(String.valueOf(monto));
+    }
+
+    private void limpiarPrincipal() {
+        txtBoleta.setText(String.valueOf(listaBoleta.totalCont()+1));
+        lblNombreEmp.setText("");
+        jdcFechIni.setDateFormatString("");
+        jdcFechFin.setDateFormatString("");
+        lblNombreCli.setText("");
+        lblDniCli.setText("");
+        lblNombreVehi.setText("");
+        lblCostoVeh.setText("");
+        txtMontoFinal.setText("0");
+        int filas = tblVehiAgre.getRowCount();
+        for(int i=0; i<filas; i++)
+                modelPedido.removeRow(0);  
     }
 
 }

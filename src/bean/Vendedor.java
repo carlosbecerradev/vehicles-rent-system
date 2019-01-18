@@ -4,7 +4,6 @@ public class Vendedor {
 
     private int codigoVendedor;
     private String nombreVendedor;
-    
     private String apePatVendedor;
     private String apeMatVendedor;
     private int edad;
