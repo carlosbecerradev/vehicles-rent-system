@@ -1,21 +1,28 @@
+
 package bean;
 
 public class Cliente {
-    
     private int codigo;
     private String nombre;
+    private String apePaterno;
+    private String apeMaterno;
+    private int edad;
     private int dni;
+    private int telefono;
+    private String direccion;
+    private String licencia;
 
-    public Cliente(int codigo, String nombre, int dni) {
+    public Cliente(int codigo, String nombre, String apePaterno, String apeMaterno, int edad, int dni, int telefono, String direccion, String licencia) {
         this.codigo = codigo;
         this.nombre = nombre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.edad = edad;
         this.dni = dni;
-    }
-    
-    public Cliente(){
-        codigo = 1;
-        nombre = "Carlos Becerra";
-        dni = 71463111;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.licencia = licencia;
+          
     }
 
     public int getCodigo() {
@@ -34,6 +41,30 @@ public class Cliente {
         this.nombre = nombre;
     }
 
+    public String getApePaterno() {
+        return apePaterno;
+    }
+
+    public void setApePaterno(String apePaterno) {
+        this.apePaterno = apePaterno;
+    }
+
+    public String getApeMaterno() {
+        return apeMaterno;
+    }
+
+    public void setApeMaterno(String apeMaterno) {
+        this.apeMaterno = apeMaterno;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
     public int getDni() {
         return dni;
     }
@@ -41,7 +72,28 @@ public class Cliente {
     public void setDni(int dni) {
         this.dni = dni;
     }
-    
-    
-    
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getLicencia() {
+        return licencia;
+    }
+
+    public void setLicencia(String licencia) {
+        this.licencia = licencia;
+    }
 }

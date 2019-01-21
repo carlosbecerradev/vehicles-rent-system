@@ -1006,8 +1006,8 @@ public class JFVendedor extends javax.swing.JFrame {
         if (fila >= 0) {
             int pos = (int) TablaVendedor1.getValueAt(fila, 0);
             Vendedor v = lista.buscar(pos);
-            JFPrincipal jfp = new JFPrincipal();
-            jfp.setVisible(true);
+            //JFPrincipal jfp = new JFPrincipal();
+            //jfp.setVisible(true);
             JFPrincipal.lblNombreEmp.setText(v.getNombreVendedor() + " " + v.getApePatVendedor());
             JFPrincipal.ven = v;
             this.dispose();

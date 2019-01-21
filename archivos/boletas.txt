@@ -3,3 +3,4 @@
 3,Manuel Sotelo,Anderson Bengolea 70267159,Tesla Model 3 MDL-S3X/,18/ene/2019,19/ene/2019,240.0
 4,Nahomy Chumpitaz,Anderson Bengolea 70267159,Tesla Model X JAM-133/,17/ene/2019,18/ene/2019,200.0
 5,Nahomy Chumpitaz,Anderson Bengolea 70267159,Ford Explorer LJA-H3H/,18/ene/2019,19/ene/2019,140.0
+6,Piero Chumpitaz,sdsds sds 23,Tesla Model X JAM-133/,04/ene/2019,09/ene/2019,1000.0

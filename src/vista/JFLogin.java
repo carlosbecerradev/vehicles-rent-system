@@ -252,13 +252,13 @@ public class JFLogin extends javax.swing.JFrame {
         datosVendedor(vendedor,passVendedor);
         if (vendedor.equals(txtUser.getText())&&passVendedor.equals(txtPassword.getText())) {
             
-            jfv.setVisible(true);
+            jfp.setVisible(true);
             jfv.jTabbedPane1.setSelectedIndex(2);
             jfv.listarE();
             jfv.btnEliminarE.setEnabled(false);
             jfv.jTabbedPane1.setEnabledAt(0, false);
             jfv.jTabbedPane1.setEnabledAt(1, false);
-            jfp.jMenuItem3.setEnabled(false);
+            jfp.jMenuItem3.setEnabled(true);
             this.dispose();
         }else if(user.equals(txtUser.getText())&&password.equals(txtPassword.getText())){
             jfp.setVisible(true);
