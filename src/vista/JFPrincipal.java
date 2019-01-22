@@ -7,9 +7,10 @@ package vista;
 
 import bean.Boleta;
 
-import bean.Cliente;
+import bean.Cliente1;
 import bean.Vendedor;
 import bean.Vehiculo;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -24,7 +25,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     static Vehiculo veh = null;
     static Vendedor ven = null;
-    static Cliente cli = null;
+    static Cliente1 cli = null;
     ArregloBoleta listaBoleta = new ArregloBoleta();
     DefaultTableModel modelPedido;
 
@@ -82,9 +83,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 600));
+        setResizable(false);
         setSize(new java.awt.Dimension(1200, 600));
 
         jpPrincipalBase.setBackground(new java.awt.Color(255, 255, 255));
@@ -101,6 +104,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         txtBoleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtBoleta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBoleta.setText("1");
+        txtBoleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBoletaActionPerformed(evt);
+            }
+        });
         jpPrincipalBase.add(txtBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 150, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -317,6 +325,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem3);
 
+        jMenuItem4.setText("BOLETAS");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -391,6 +407,17 @@ public class JFPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        
+        JFBoleta jfb = new JFBoleta();
+        jfb.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void txtBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBoletaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBoletaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,11 +470,12 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    public static javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     public static javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -595,17 +623,27 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void limpiarPrincipal() {
         txtBoleta.setText(String.valueOf(listaBoleta.totalCont()+1));
-        lblNombreEmp.setText("");
-        jdcFechIni.setDateFormatString("");
-        jdcFechFin.setDateFormatString("");
         lblNombreCli.setText("");
         lblDniCli.setText("");
         lblNombreVehi.setText("");
         lblCostoVeh.setText("");
         txtMontoFinal.setText("0");
+        jdcFechFin.setDate(StringADate(""));
+        jdcFechIni.setDate(StringADate(""));
         int filas = tblVehiAgre.getRowCount();
         for(int i=0; i<filas; i++)
                 modelPedido.removeRow(0);  
+    }
+    
+    public java.util.Date StringADate(String fecha){
+        SimpleDateFormat formato_del_texto = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaE=null;
+        try{
+            fechaE = formato_del_texto.parse(fecha);
+            return fechaE;
+        }catch(ParseException ex){
+            return null;
+        }
     }
 
 }

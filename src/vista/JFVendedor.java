@@ -11,15 +11,14 @@ public class JFVendedor extends javax.swing.JFrame {
 
     DefaultTableModel modelo1;
     public ArrayVendedor lista = new ArrayVendedor();
+    JFLogin jfl;
 
     public JFVendedor() {
 
         initComponents();
-
+        txtCodigo.setText(String.valueOf(lista.cantidadVendedor()+1));
         modelo1 = (DefaultTableModel) TablaVendedor1.getModel();
-        
-
-        //modelo.setColumnIdentifiers(titulo);
+       //modelo.setColumnIdentifiers(titulo);
         this.setLocationRelativeTo(null);
 
     }
@@ -82,6 +81,7 @@ public class JFVendedor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -115,6 +115,7 @@ public class JFVendedor extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Sexo:");
 
+        txtCodigo.setEditable(false);
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoKeyTyped(evt);
@@ -857,7 +858,7 @@ public class JFVendedor extends javax.swing.JFrame {
     }
 
     private void limpiar() {
-        txtCodigo.setText(null);
+        txtCodigo.setText(String.valueOf(lista.cantidadVendedor()+1));
         txtNombre.setText(null);
         txtApePat.setText(null);
         txtApeMat.setText(null);
@@ -1006,8 +1007,8 @@ public class JFVendedor extends javax.swing.JFrame {
         if (fila >= 0) {
             int pos = (int) TablaVendedor1.getValueAt(fila, 0);
             Vendedor v = lista.buscar(pos);
-            //JFPrincipal jfp = new JFPrincipal();
-            //jfp.setVisible(true);
+            JFPrincipal jfp = new JFPrincipal();
+            jfp.setVisible(true);
             JFPrincipal.lblNombreEmp.setText(v.getNombreVendedor() + " " + v.getApePatVendedor());
             JFPrincipal.ven = v;
             this.dispose();

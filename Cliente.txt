@@ -1,3 +1,2 @@
-1,sdsds,sds,sdsdsdss,232322,23,232323,232,222
-12323,sdsdsd,sdsdsd,sdsds,22,222,2323,sdsd,232d
-4,Anderson,Bengolea,Sánchez,24,70267159,957480008,Villa Condestable Mz A Lt 5,987234-md
+1,Rosa,Rosales,Rosas,22,71238423,926372642,SJM,23823421
+2,Cristian,Huaman,Huamani,33,39483202,963742833,SJM,2324242323

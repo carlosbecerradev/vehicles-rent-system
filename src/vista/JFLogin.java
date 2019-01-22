@@ -1,4 +1,3 @@
-
 package vista;
 
 import bean.Vendedor;
@@ -8,10 +7,12 @@ import static vista.JFVendedor.TablaVendedor1;
 import vista.JFPrincipal;
 
 public class JFLogin extends javax.swing.JFrame {
+
     private String user, password;
     private String vendedor, passVendedor;
     JFVendedor jfv = new JFVendedor();
     JFPrincipal jfp = new JFPrincipal();
+
     public JFLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -38,6 +39,7 @@ public class JFLogin extends javax.swing.JFrame {
         btnIngresar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -182,7 +184,7 @@ public class JFLogin extends javax.swing.JFrame {
 
     private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
         char c = evt.getKeyChar();
-        if (Character.isDigit(c)||Character.isAlphabetic(c)) {
+        if (Character.isDigit(c) || Character.isAlphabetic(c)) {
 
         } else {
             evt.consume();
@@ -233,39 +235,39 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUser;
+    public static javax.swing.JPasswordField txtPassword;
+    public static javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
-    public void datos(String us, String pas){
+    public void datos(String us, String pas) {
         user = "admin";
         password = "1234";
     }
-    public void datosVendedor(String us, String pas){
+
+    public void datosVendedor(String us, String pas) {
         vendedor = "vendedor";
         passVendedor = "12345";
     }
-    
-    
+
     private void ingresar() {
-        datos(user,password);
-        datosVendedor(vendedor,passVendedor);
-        if (vendedor.equals(txtUser.getText())&&passVendedor.equals(txtPassword.getText())) {
-            
-            jfp.setVisible(true);
+        datos(user, password);
+        datosVendedor(vendedor, passVendedor);
+        
+
+        if (vendedor.equals(txtUser.getText()) && passVendedor.equals(txtPassword.getText())) {
+         
+            jfv.setVisible(true);
             jfv.jTabbedPane1.setSelectedIndex(2);
             jfv.listarE();
             jfv.btnEliminarE.setEnabled(false);
             jfv.jTabbedPane1.setEnabledAt(0, false);
             jfv.jTabbedPane1.setEnabledAt(1, false);
-            jfp.jMenuItem3.setEnabled(true);
             this.dispose();
-        }else if(user.equals(txtUser.getText())&&password.equals(txtPassword.getText())){
+        } else if (user.equals(txtUser.getText()) && password.equals(txtPassword.getText())) {
             jfp.setVisible(true);
             jfp.lblNombreEmp.setText("Administrador");
-            
             this.dispose();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "El Usuario y/o Contraseña son incorrectos \nIngrese nuevamente sus datos");
         }
     }
@@ -273,6 +275,5 @@ public class JFLogin extends javax.swing.JFrame {
     private void cancelar() {
         System.exit(0);
     }
-    
-    
+
 }

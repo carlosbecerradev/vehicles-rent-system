@@ -26,6 +26,7 @@ public class JFVehiculo extends javax.swing.JFrame {
 
     public JFVehiculo() {
         initComponents();
+        txtCodigoR.setText(String.valueOf(listaVehi.totalVehi()+1));
         this.setLocationRelativeTo(null);
         modelo = (DefaultTableModel) tblListaVehi.getModel();
     }
@@ -107,6 +108,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         btnBuscarE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -149,6 +151,7 @@ public class JFVehiculo extends javax.swing.JFrame {
         jLabel5.setText("N° ASIENTOS:");
         jpRVehi.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 180, 25));
 
+        txtCodigoR.setEditable(false);
         txtCodigoR.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtCodigoR.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -755,7 +758,7 @@ public class JFVehiculo extends javax.swing.JFrame {
                         combustibleR(), asientosR(), categoriaR(), costoR(), estadoR(), imagenR());
                 String respuesta = listaVehi.adicionar(p);
                 if (respuesta.equals("Vehículo guardado correctamente")) {
-                    limpiarR();
+                    
                 }
                 listaVehi.grabar();
                 JOptionPane.showMessageDialog(null, respuesta);
@@ -816,7 +819,7 @@ public class JFVehiculo extends javax.swing.JFrame {
      * ************** LIMPIAR *************
      */
     private void limpiarR() {
-        txtCodigoR.setText("");
+        txtCodigoR.setText(String.valueOf(listaVehi.totalVehi()+1));
         txtMarcaR.setText("");
         txtModeloR.setText("");
         txtPlacaR.setText("");

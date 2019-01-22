@@ -1,3 +1,4 @@
-5,Manuel,Sotelo,Bengolea,25,932433532,Hombre
-7,Nahomy,Chumpitaz,Bengoela,4,927372423,Mujer
-9,Piero,Chumpitaz,Bengolea,19,92452352,Hombre
+1,Anderson,Bengolea,Sánchez,24,957480008,Hombre
+2,Anthony,Carhuajulca,Morales,18,932382374,Hombre
+3,Carlos,Becerra,Hernandez,22,938462332,Hombre
+4,Susan,Rojas,Barreto,23,4937232,Mujer

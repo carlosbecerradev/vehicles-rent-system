@@ -1,7 +1,7 @@
 package vista;
 
 
-import bean.Cliente;
+import bean.Cliente1;
 import bean.Vehiculo;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +18,7 @@ public class JFCliente extends javax.swing.JFrame {
         initComponents();
         modelo = (DefaultTableModel) tblListaCliente.getModel();
         this.setLocationRelativeTo(null);
+        txtCodigo.setText(String.valueOf(listaCliente.totalCliente()+1));
     }
 
     /**
@@ -89,6 +90,7 @@ public class JFCliente extends javax.swing.JFrame {
         jButton2.setText("REGISTRAR");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -169,6 +171,7 @@ public class JFCliente extends javax.swing.JFrame {
         });
         jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 360, 266, 33));
 
+        txtCodigo.setEditable(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -514,7 +517,7 @@ public class JFCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -808,7 +811,7 @@ public class JFCliente extends javax.swing.JFrame {
               txtTelefono.getText().equals("")|| txtDireccion.getText().equals("")|| txtLicencia.getText().equals(""); 
         if (!validar) {
         try {
-            Cliente p= new Cliente(getCodigo(), getNombre(),getApePaterno(),getApeMaterno(),getEdad(),getDni(),
+            Cliente1 p= new Cliente1(getCodigo(), getNombre(),getApePaterno(),getApeMaterno(),getEdad(),getDni(),
                     getTelefono(),getDireccion(),getLicencia());
             String respuesta = listaCliente.adicionar(p);
             listaCliente.grabar();
@@ -852,7 +855,7 @@ public class JFCliente extends javax.swing.JFrame {
        return txtLicencia.getText();  
     }
     private void limpiar() {
-        txtCodigo.setText("");
+        txtCodigo.setText(String.valueOf(listaCliente.totalCliente()));
         txtNombre.setText("");
         txtApeP.setText("");
         txtApeM.setText("");
@@ -887,7 +890,7 @@ public class JFCliente extends javax.swing.JFrame {
         else JOptionPane.showMessageDialog(null, "No hay Clientes para mostrar");
     }  
 
-    private void mostrarAlumno(Cliente p) {
+    private void mostrarAlumno(Cliente1 p) {
         txtNombreM.setText(p.getNombre());
         txtApePaternoM.setText(p.getApePaterno());
         txtApeMaternoM.setText(p.getApeMaterno());
@@ -904,7 +907,7 @@ public class JFCliente extends javax.swing.JFrame {
               txtTelefonoM.getText().equals("")|| txtDireccionM.getText().equals("")|| txtLicenciaM.getText().equals(""); 
         if (!validar) { 
             try{
-                Cliente p = new Cliente(getCodigoM(), getNombreM(),getApePaternoM()
+                Cliente1 p = new Cliente1(getCodigoM(), getNombreM(),getApePaternoM()
                     ,getApeMaternoM(),getEdadM(),getDniM(),
                     getTelefonoM(),getDireccionM(),
                     getLicenciaM());
@@ -947,15 +950,22 @@ public class JFCliente extends javax.swing.JFrame {
     }
       
     private void eliminar() {
-        try{
-            Cliente p = null;
-            p = listaCliente.buscar(getCodigoBuscar());
-            listaCliente.grabar();
-            listaCliente.eliminar(p);
-            JOptionPane.showMessageDialog(null, "Eliminación correctamente");
-            listar();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error no se pudo Eliminar: "+e.toString());     
+        Cliente1 c = null;
+        boolean codigo = txtCodigoBuscar.getText().equals("");
+        if (!codigo) {
+            c = listaCliente.buscar(getCodigoBuscar());
+            if (c != null) {
+                listaCliente.eliminar(c);
+                listaCliente.grabar();
+                JOptionPane.showMessageDialog(null, "Eliminación realizada con éxito");
+                txtCodigoM.setText("");
+                txtCodigoM.requestFocus();
+                listar();
+            } else {
+                JOptionPane.showMessageDialog(null, "El código no existe");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese un código");
         }
     }
     private int getCodigoBuscar() {
@@ -964,7 +974,7 @@ public class JFCliente extends javax.swing.JFrame {
 
     private void buscarModificar() {
         try{
-            Cliente p = null;
+            Cliente1 p = null;
             p = listaCliente.buscar(getCodigoM());
             mostrarAlumno(p);
         }catch(Exception e){
@@ -989,7 +999,7 @@ public class JFCliente extends javax.swing.JFrame {
         int fila= tblListaCliente.getSelectedRow();
         if(fila>=0){
             int pos = (int)tblListaCliente.getValueAt(fila, 0);
-            Cliente v = listaCliente.buscar(pos);
+            Cliente1 v = listaCliente.buscar(pos);
             txtCodigoBuscar.setText(String.valueOf(v.getCodigo()));
         }
     }
@@ -998,10 +1008,15 @@ public class JFCliente extends javax.swing.JFrame {
          int fila = tblListaCliente.getSelectedRow();
         if (fila >= 0) {
             int pos = (int) tblListaCliente.getValueAt(fila, 0);
-            Cliente c = listaCliente.buscar(pos);
+            Cliente1 c = listaCliente.buscar(pos);
+            if(c.getNombre()==null){
+                JFPrincipal.lblNombreCli.setText("");
+                JFPrincipal.lblDniCli.setText("");
+            }else{
             JFPrincipal.lblNombreCli.setText(c.getNombre()+ " " + c.getApePaterno());
             JFPrincipal.lblDniCli.setText(String.valueOf(c.getDni()));
             JFPrincipal.cli = c;
+            }
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona una fila de la Tabla para enviar los datos");
