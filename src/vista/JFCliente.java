@@ -1,7 +1,7 @@
 package vista;
 
 
-import bean.Cliente1;
+import bean.Cliente;
 import bean.Vehiculo;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -811,7 +811,7 @@ public class JFCliente extends javax.swing.JFrame {
               txtTelefono.getText().equals("")|| txtDireccion.getText().equals("")|| txtLicencia.getText().equals(""); 
         if (!validar) {
         try {
-            Cliente1 p= new Cliente1(getCodigo(), getNombre(),getApePaterno(),getApeMaterno(),getEdad(),getDni(),
+            Cliente p= new Cliente(getCodigo(), getNombre(),getApePaterno(),getApeMaterno(),getEdad(),getDni(),
                     getTelefono(),getDireccion(),getLicencia());
             String respuesta = listaCliente.adicionar(p);
             listaCliente.grabar();
@@ -890,7 +890,7 @@ public class JFCliente extends javax.swing.JFrame {
         else JOptionPane.showMessageDialog(null, "No hay Clientes para mostrar");
     }  
 
-    private void mostrarAlumno(Cliente1 p) {
+    private void mostrarAlumno(Cliente p) {
         txtNombreM.setText(p.getNombre());
         txtApePaternoM.setText(p.getApePaterno());
         txtApeMaternoM.setText(p.getApeMaterno());
@@ -907,7 +907,7 @@ public class JFCliente extends javax.swing.JFrame {
               txtTelefonoM.getText().equals("")|| txtDireccionM.getText().equals("")|| txtLicenciaM.getText().equals(""); 
         if (!validar) { 
             try{
-                Cliente1 p = new Cliente1(getCodigoM(), getNombreM(),getApePaternoM()
+                Cliente p = new Cliente(getCodigoM(), getNombreM(),getApePaternoM()
                     ,getApeMaternoM(),getEdadM(),getDniM(),
                     getTelefonoM(),getDireccionM(),
                     getLicenciaM());
@@ -950,7 +950,7 @@ public class JFCliente extends javax.swing.JFrame {
     }
       
     private void eliminar() {
-        Cliente1 c = null;
+        Cliente c = null;
         boolean codigo = txtCodigoBuscar.getText().equals("");
         if (!codigo) {
             c = listaCliente.buscar(getCodigoBuscar());
@@ -974,7 +974,7 @@ public class JFCliente extends javax.swing.JFrame {
 
     private void buscarModificar() {
         try{
-            Cliente1 p = null;
+            Cliente p = null;
             p = listaCliente.buscar(getCodigoM());
             mostrarAlumno(p);
         }catch(Exception e){
@@ -999,7 +999,7 @@ public class JFCliente extends javax.swing.JFrame {
         int fila= tblListaCliente.getSelectedRow();
         if(fila>=0){
             int pos = (int)tblListaCliente.getValueAt(fila, 0);
-            Cliente1 v = listaCliente.buscar(pos);
+            Cliente v = listaCliente.buscar(pos);
             txtCodigoBuscar.setText(String.valueOf(v.getCodigo()));
         }
     }
@@ -1008,7 +1008,7 @@ public class JFCliente extends javax.swing.JFrame {
          int fila = tblListaCliente.getSelectedRow();
         if (fila >= 0) {
             int pos = (int) tblListaCliente.getValueAt(fila, 0);
-            Cliente1 c = listaCliente.buscar(pos);
+            Cliente c = listaCliente.buscar(pos);
             if(c.getNombre()==null){
                 JFPrincipal.lblNombreCli.setText("");
                 JFPrincipal.lblDniCli.setText("");

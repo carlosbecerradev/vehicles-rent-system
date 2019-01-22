@@ -7,7 +7,7 @@ package vista;
 
 import bean.Boleta;
 
-import bean.Cliente1;
+import bean.Cliente;
 import bean.Vendedor;
 import bean.Vehiculo;
 import java.text.ParseException;
@@ -25,7 +25,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     static Vehiculo veh = null;
     static Vendedor ven = null;
-    static Cliente1 cli = null;
+    static Cliente cli = null;
     ArregloBoleta listaBoleta = new ArregloBoleta();
     DefaultTableModel modelPedido;
 

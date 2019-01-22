@@ -1,2 +1,3 @@
 1,Carlos Becerra,Cristian Huaman 39483202,Camaro SS BMB-B33/,21/ene/2019,24/ene/2019,750.0
 2,Administrador,Rosa Rosales 71238423,Audi a20 3923842M-M32/,21/ene/2019,22/ene/2019,333.0
+3,Administrador,Rosa Rosales 71238423,Tesla Model X JAM-133/,11/ene/2019,14/ene/2019,600.0

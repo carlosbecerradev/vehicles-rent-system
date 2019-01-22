@@ -1,6 +1,6 @@
 
 package modelo;
-import bean.Cliente1;
+import bean.Cliente;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,15 +11,15 @@ import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
 public class arreglo_Cliente {
-    private ArrayList<Cliente1> lista;
+    private ArrayList<Cliente> lista;
 
     public arreglo_Cliente() {
-        lista = new ArrayList<Cliente1>();
+        lista = new ArrayList<Cliente>();
         cargar();
     }
-    public String adicionar(Cliente1 p){
+    public String adicionar(Cliente p){
         String mensaje;
-        Cliente1 x = buscar(p.getCodigo());
+        Cliente x = buscar(p.getCodigo());
         if (x==null){
             lista.add(p);
             mensaje = "El cliente se guardo correctamente";
@@ -28,15 +28,15 @@ public class arreglo_Cliente {
         }
         return mensaje;
     }   
-    public void eliminar(Cliente1 p){
+    public void eliminar(Cliente p){
         lista.remove(p);
     }
     
-    public Cliente1 obtener(int posicion){
+    public Cliente obtener(int posicion){
         return lista.get(posicion);
     }  
-    public Cliente1 buscar(int codigo){
-        Cliente1 p=null;
+    public Cliente buscar(int codigo){
+        Cliente p=null;
         for(int i=0; i<lista.size(); i++){
             if(obtener(i).getCodigo()==codigo){
                 p = obtener(i);
@@ -55,7 +55,7 @@ public class arreglo_Cliente {
         }
         return posicion;
     }
-    public void actualizar(Cliente1 p){
+    public void actualizar(Cliente p){
         lista.set(buscarPosicion(p.getCodigo()), p);
     }
     
@@ -85,7 +85,7 @@ public class arreglo_Cliente {
                     
                   
 
-                    Cliente1 x =new Cliente1(codigo, nombre, apePaterno, apeMaterno, edad, dni,                        
+                    Cliente x =new Cliente(codigo, nombre, apePaterno, apeMaterno, edad, dni,                        
                             telefono, direccion, licencia);
                     adicionar(x);
                 }
