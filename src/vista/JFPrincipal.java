@@ -573,6 +573,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 int resta = 0;
                 resta = fechIni().getDate() - fechFin().getDate();               
                 if (resta < 0) {
+                    
                     Object ar[] = new Object[6];
                     ar[0] = lblNombreVehi.getText();
                     ar[1] = veh.getPlaca();
@@ -584,6 +585,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                     ar[5] = String.format("%.2f", importe).replace(',', '.');
                     modelPedido.addRow(ar);
                     colocarMonto();
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Los dias de alquiler deben ser mayor a 0..");
             }
